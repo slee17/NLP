@@ -46,10 +46,6 @@ from collections import Counter
 from nltk.corpus import stopwords
 from nltk.collocations import *
 
-
-# use scikit-learn multinomial naivebayes
-# write your own member functions for extracting features
-# and representing them as a numpy array
 class TextClassifier():
     def __init__(self, path_object, alpha_value = 0.4):
         """Sets the starting state of the classifier."""
