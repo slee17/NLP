@@ -182,18 +182,11 @@ class TextClassifier():
 
 
 if __name__=="__main__":
-
-    # For interaction with the program
     tc = TextClassifier(Path('2008_election'))
-
-    # TESTS FOR GET_TOKENS AND GET_FEATURE_NAMES
-    # tc.get_tokens(Path('2008_election/Dem_01/73120'))
-    # tc.get_feature_names(Path('2008_election/Dem_01/73120'))
 
     paths = []
     labels = []
 
-    # SET UP FOR RUNNING THE PROGRAM (BUILD PATHS AND LABELS)
     p = Path('2008_election')
     paths += sorted(p.glob('DEM*/*'))
 
@@ -205,28 +198,7 @@ if __name__=="__main__":
     for i in range(len(republicans)):
         labels.append('REP')
 
-    # ALTERNATE PATH TO USE FOR TESTING
-    #for path in paths:
-    #    a = 
-    #paths = [Path('2008_election/DEM_01/73120'),
-    #        Path('2008_election/DEM_01/76232'),
-    #        Path('2008_election/DEM_01/76302'),
-    #        Path('2008_election/DEM_01/76361'),
-    #        Path('2008_election/DEM_01/76456'),
-    #        Path('2008_election/REP_02/62273'),
-    #        Path('2008_election/REP_02/77103'),
-    #        Path('2008_election/REP_02/77104'),
-    #        Path('2008_election/REP_02/77105'),
-    #        Path('2008_election/REP_02/77106'),
-    #        Path('2008_election/REP_02/77107')]
-    #labels = ['Democrats', 'Democrats', 'Democrats', 'Democrats', 'Democrats',
-    #          'Republican', 'Republican', 'Republican', 'Republican', 'Republican', 'Republican']"""
-
-    # TESTS FOR EXTRACT_FEATURES, GET_TOKENS, AND EXTRACT_BIGRAMS, DO_CROSS_VALIDATION, AND DO_FEATURE_COMPARISON
-    #print(tc.extract_features(Path('2008_election/DEM_01/73120')))
-    #tokens = tc.get_tokens(Path('2008_election/DEM_01/73120'))
-    #print(tc.extract_bigrams(tokens))
-    #tc.get_bigrams(['hello', 'world', 'foo', 'bar', 'hi', 'hello', 'world'])
+    # print f1-score of the system and its most predictive features
     print(tc.do_cross_validation(paths, labels))
     most_predictive = tc.do_feature_comparison()
     for (coef, feature) in most_predictive:
